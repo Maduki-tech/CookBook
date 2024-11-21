@@ -1,0 +1,40 @@
+@startuml
+
+entity User{
+    * id int PK
+    -- 
+    * name string
+    * email string
+    * Recipes []Recipe
+    * LikedRecipes []Recipe
+}
+
+entity Recipe{
+    * id int PK
+    --
+    * name string
+    * image string
+    * description string
+    * tags []Tag
+    * ingredients []Ingredient
+}
+
+entity Ingredient{
+    * id int PK
+    --
+    * name string
+    * amount int
+    * unit string
+}
+
+entity Tag{
+    * id int PK
+    --
+    * name string
+}
+
+User "1" -- "1..*" Recipe
+Recipe "1" -- "1..*" Ingredient
+Recipe "1" -- "1..*" Tag
+
+@enduml
